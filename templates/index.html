@@ -1,0 +1,24 @@
+ {% extends 'base.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+    {% for i in range(0, length) %}
+    {% if i%3 == 0 %}
+        <div class="filmDiv row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
+    {% endif %}
+    {% if 'image' in values[i] %}
+            <div class="film col">
+                <img src={{values[i].image.url}} alt="Film Cover Image" width=100%/>
+                <h3>{{values[i].title}}</h3>
+                <p>{{values[i].year}}</p>
+                <p>{{values[i].id}}</p>
+            </div>
+    {% endif %}
+    {% if ((i+1)%3 == 0 and i != 0) or (i == length) %}
+        </div>
+    {% endif %}
+    {% endfor %}
+    </div>
+{% endblock %}

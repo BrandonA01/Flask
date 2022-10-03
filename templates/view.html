@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{%block title%}Wagwan{%endblock%}
+{%block content%}
+    {%for item in values%}
+        <p>ID: {{item._id}}, Name: {{item.firstName}}, Email: {{item.email}}</p>
+    {%endfor%}
+{%endblock%}
