@@ -3,22 +3,43 @@
 {% block title %}Home Page{% endblock %}
 
 {% block content %}
-    <div class="container-fluid">
+    <div class="container-fluid" id="slideshowHome" style="padding: 0;">
+        <img class="mySlide fade" src="https://m.media-amazon.com/images/M/MV5BZWYzOGEwNTgtNWU3NS00ZTQ0LWJkODUtMmVhMjIwMjA1ZmQwXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_.jpg" style="width: 100%; height: 900px; object-fit: cover; object-position: 70% 70%;"/>
+        <img class="mySlide fade" src="https://m.media-amazon.com/images/M/MV5BMWFmYmRiYzMtMTQ4YS00NjA5LTliYTgtMmM3OTc4OGY3MTFkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_.jpg" style="width: 100%; height: 900px; object-fit: cover; object-position: bottom;"/>
+        <img class="mySlide fade" src="https://m.media-amazon.com/images/M/MV5BYmMxZWRiMTgtZjM0Ny00NDQxLWIxYWQtZDdlNDNkOTEzYTdlXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg" style="width: 100%; height: 900px; object-fit: cover; object-position: bottom;"/>
+    </div>
+    <div class="container-fluid" id="homePageFilms" style="justify-content: center; display: grid;">
+        <h1>Top 100 Films</h1>
+        
     {% for i in range(0, length) %}
     {% if i%3 == 0 %}
-        <div class="filmDiv row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
+        <div class="filmDiv row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center" style="display: inline-flex;">
     {% endif %}
-    {% if 'image' in values[i] %}
             <div class="film col">
-                <img src={{values[i].image.url}} alt="Film Cover Image" width=100%/>
-                <h3>{{values[i].title}}</h3>
-                <p>{{values[i].year}}</p>
-                <p>{{values[i].id}}</p>
+                <a href="/film/{{values[i]._id}}"><img  class="filmButton" src={{values[i].url}} alt="Film Cover Image" height=600px width=400px style="object-fit: cover;"/></a>
+                <h3 style="margin-top: 12px;">{{values[i].title}}</h3>
             </div>
-    {% endif %}
     {% if ((i+1)%3 == 0 and i != 0) or (i == length) %}
         </div>
     {% endif %}
     {% endfor %}
     </div>
+    <script>
+        let slideIndex = 0;
+        showSlides();
+        
+        function showSlides() {
+          let i;
+          let slides = document.getElementsByClassName("mySlide");
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+          }
+          slideIndex++;
+          if (slideIndex > slides.length) {
+            slideIndex = 1
+            }    
+          slides[slideIndex-1].style.display = "block";  
+          setTimeout(showSlides, 4000); // Change image every 2 seconds
+        }
+    </script>
 {% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid" id="homePageFilms" style="justify-content: center; display: grid;">
+    <h1>Top 100 Films</h1>
+    
+{% for i in range(0, length) %}
+{% if i%3 == 0 %}
+    <div class="filmDiv row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center" style="display: inline-flex;">
+{% endif %}
+        <div class="film col">
+            <a href="/film/{{values[i]._id}}"><img  class="filmButton" src={{values[i].url}} alt="Film Cover Image" height=600px width=400px style="object-fit: cover;"/></a>
+            <h3 style="margin-top: 12px;">{{values[i].title}}</h3>
+        </div>
+{% if ((i+1)%3 == 0 and i != 0) or (i == length) %}
+    </div>
+{% endif %}
+{% endfor %}
+</div>
+
+{% endblock %}

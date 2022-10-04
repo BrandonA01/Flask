@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+
+<img height=600px width=400px style="object-fit: cover;" src={{url}} alt="The film's cover picture"/>
+<h1>{{title}}</h1>
+<p>{{rat if rat}}</p>
+<p>{{desc}}</p>
+
+{% endblock %}

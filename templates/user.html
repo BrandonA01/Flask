@@ -10,8 +10,19 @@
     {% endif %}
 {% endwith %}
 
-<form action="#" method="POST">
-    <input type="email" name="email" placeholder="Enter Email" value ="{{email if email}}" />
-    <input type="submit" value="submit" />
-</form>
+<div class="container-fluid" id="profile-info">
+    <div id="profile-content">
+        <img src="/static/Portrait_Placeholder.png" alt="Profile Pic" width="200px" height="200px" style="border-radius: 50%;"/>
+        <form action="#" method="POST">
+            <p>Email:</p>
+            <input class="form-style" type="email" name="email" placeholder="Enter Email" value ="{{email if email}}" />
+            <p>First Name:</p>
+            <input class="form-style" name="fname" placeholder="Enter Fisrt Name" value ="{{fname if fname}}" />
+            <p>Last Name:</p>
+            <input class="form-style" name="lname" placeholder="Enter Last Name" value ="{{lname if lname}}" />
+            <input class="btn mt-4" type="submit" value="submit" />
+        </form>
+    </div>
+</div>
+
 {%endblock%}
